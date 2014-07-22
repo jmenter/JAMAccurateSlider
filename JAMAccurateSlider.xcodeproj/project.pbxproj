@@ -16,22 +16,8 @@
 		6354FB4D197F210000390034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354FB4B197F210000390034 /* Main.storyboard */; };
 		6354FB50197F210000390034 /* JAMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB4F197F210000390034 /* JAMViewController.m */; };
 		6354FB52197F210000390034 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6354FB51197F210000390034 /* Images.xcassets */; };
-		6354FB59197F210000390034 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354FB58197F210000390034 /* XCTest.framework */; };
-		6354FB5A197F210000390034 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354FB39197F210000390034 /* Foundation.framework */; };
-		6354FB5B197F210000390034 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354FB3D197F210000390034 /* UIKit.framework */; };
-		6354FB63197F210000390034 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6354FB61197F210000390034 /* InfoPlist.strings */; };
-		6354FB65197F210000390034 /* JAMAccurateSliderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB64197F210000390034 /* JAMAccurateSliderTests.m */; };
+		6354FB72197F218C00390034 /* JAMAccurateSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB71197F218C00390034 /* JAMAccurateSlider.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6354FB5C197F210000390034 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6354FB2E197F210000390034 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6354FB35197F210000390034;
-			remoteInfo = JAMAccurateSlider;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6354FB36197F210000390034 /* JAMAccurateSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JAMAccurateSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,11 +34,8 @@
 		6354FB4E197F210000390034 /* JAMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JAMViewController.h; sourceTree = "<group>"; };
 		6354FB4F197F210000390034 /* JAMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JAMViewController.m; sourceTree = "<group>"; };
 		6354FB51197F210000390034 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6354FB57197F210000390034 /* JAMAccurateSliderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JAMAccurateSliderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6354FB58197F210000390034 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		6354FB60197F210000390034 /* JAMAccurateSliderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JAMAccurateSliderTests-Info.plist"; sourceTree = "<group>"; };
-		6354FB62197F210000390034 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6354FB64197F210000390034 /* JAMAccurateSliderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JAMAccurateSliderTests.m; sourceTree = "<group>"; };
+		6354FB70197F218C00390034 /* JAMAccurateSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAMAccurateSlider.h; sourceTree = "<group>"; };
+		6354FB71197F218C00390034 /* JAMAccurateSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAMAccurateSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,24 +49,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6354FB54197F210000390034 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6354FB59197F210000390034 /* XCTest.framework in Frameworks */,
-				6354FB5B197F210000390034 /* UIKit.framework in Frameworks */,
-				6354FB5A197F210000390034 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		6354FB2D197F210000390034 = {
 			isa = PBXGroup;
 			children = (
+				6354FB6E197F218C00390034 /* Classes */,
 				6354FB3F197F210000390034 /* JAMAccurateSlider */,
-				6354FB5E197F210000390034 /* JAMAccurateSliderTests */,
 				6354FB38197F210000390034 /* Frameworks */,
 				6354FB37197F210000390034 /* Products */,
 			);
@@ -93,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				6354FB36197F210000390034 /* JAMAccurateSlider.app */,
-				6354FB57197F210000390034 /* JAMAccurateSliderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,7 +76,6 @@
 				6354FB39197F210000390034 /* Foundation.framework */,
 				6354FB3B197F210000390034 /* CoreGraphics.framework */,
 				6354FB3D197F210000390034 /* UIKit.framework */,
-				6354FB58197F210000390034 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,22 +105,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6354FB5E197F210000390034 /* JAMAccurateSliderTests */ = {
+		6354FB6E197F218C00390034 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6354FB64197F210000390034 /* JAMAccurateSliderTests.m */,
-				6354FB5F197F210000390034 /* Supporting Files */,
+				6354FB6F197F218C00390034 /* JAMAccurateSlider */,
 			);
-			path = JAMAccurateSliderTests;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		6354FB5F197F210000390034 /* Supporting Files */ = {
+		6354FB6F197F218C00390034 /* JAMAccurateSlider */ = {
 			isa = PBXGroup;
 			children = (
-				6354FB60197F210000390034 /* JAMAccurateSliderTests-Info.plist */,
-				6354FB61197F210000390034 /* InfoPlist.strings */,
+				6354FB70197F218C00390034 /* JAMAccurateSlider.h */,
+				6354FB71197F218C00390034 /* JAMAccurateSlider.m */,
 			);
-			name = "Supporting Files";
+			path = JAMAccurateSlider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,24 +142,6 @@
 			productReference = 6354FB36197F210000390034 /* JAMAccurateSlider.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6354FB56197F210000390034 /* JAMAccurateSliderTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6354FB6B197F210000390034 /* Build configuration list for PBXNativeTarget "JAMAccurateSliderTests" */;
-			buildPhases = (
-				6354FB53197F210000390034 /* Sources */,
-				6354FB54197F210000390034 /* Frameworks */,
-				6354FB55197F210000390034 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6354FB5D197F210000390034 /* PBXTargetDependency */,
-			);
-			name = JAMAccurateSliderTests;
-			productName = JAMAccurateSliderTests;
-			productReference = 6354FB57197F210000390034 /* JAMAccurateSliderTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,11 +151,6 @@
 				CLASSPREFIX = JAM;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Jeff Menter";
-				TargetAttributes = {
-					6354FB56197F210000390034 = {
-						TestTargetID = 6354FB35197F210000390034;
-					};
-				};
 			};
 			buildConfigurationList = 6354FB31197F210000390034 /* Build configuration list for PBXProject "JAMAccurateSlider" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -219,7 +166,6 @@
 			projectRoot = "";
 			targets = (
 				6354FB35197F210000390034 /* JAMAccurateSlider */,
-				6354FB56197F210000390034 /* JAMAccurateSliderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -235,14 +181,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6354FB55197F210000390034 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6354FB63197F210000390034 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -251,28 +189,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6354FB46197F210000390034 /* main.m in Sources */,
+				6354FB72197F218C00390034 /* JAMAccurateSlider.m in Sources */,
 				6354FB4A197F210000390034 /* JAMAppDelegate.m in Sources */,
 				6354FB50197F210000390034 /* JAMViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6354FB53197F210000390034 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6354FB65197F210000390034 /* JAMAccurateSliderTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6354FB5D197F210000390034 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6354FB35197F210000390034 /* JAMAccurateSlider */;
-			targetProxy = 6354FB5C197F210000390034 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6354FB42197F210000390034 /* InfoPlist.strings */ = {
@@ -289,14 +212,6 @@
 				6354FB4C197F210000390034 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6354FB61197F210000390034 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6354FB62197F210000390034 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -334,7 +249,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -366,7 +281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -380,7 +295,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Prefix.pch";
 				INFOPLIST_FILE = "JAMAccurateSlider/JAMAccurateSlider-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -393,48 +310,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Prefix.pch";
 				INFOPLIST_FILE = "JAMAccurateSlider/JAMAccurateSlider-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		6354FB6C197F210000390034 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JAMAccurateSlider.app/JAMAccurateSlider";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "JAMAccurateSliderTests/JAMAccurateSliderTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		6354FB6D197F210000390034 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JAMAccurateSlider.app/JAMAccurateSlider";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Prefix.pch";
-				INFOPLIST_FILE = "JAMAccurateSliderTests/JAMAccurateSliderTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -455,14 +334,6 @@
 			buildConfigurations = (
 				6354FB69197F210000390034 /* Debug */,
 				6354FB6A197F210000390034 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		6354FB6B197F210000390034 /* Build configuration list for PBXNativeTarget "JAMAccurateSliderTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6354FB6C197F210000390034 /* Debug */,
-				6354FB6D197F210000390034 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

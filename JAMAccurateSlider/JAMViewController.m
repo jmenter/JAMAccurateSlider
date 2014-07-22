@@ -1,14 +1,10 @@
-//
-//  JAMViewController.m
-//  JAMAccurateSlider
-//
-//  Created by Jeff Menter on 7/22/14.
-//  Copyright (c) 2014 Jeff Menter. All rights reserved.
-//
 
 #import "JAMViewController.h"
+#import "JAMAccurateSlider.h"
 
 @interface JAMViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet JAMAccurateSlider *slider;
 
 @end
 
@@ -17,13 +13,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self sliderDidChange:nil];
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)sliderDidChange:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.label.text = [NSString stringWithFormat:@"slider value: %0.3f", self.slider.value];
 }
 
 @end
