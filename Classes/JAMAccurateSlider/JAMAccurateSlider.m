@@ -53,6 +53,7 @@ static const float kAnimationFadeOutDuration = 0.4;
     styledCaliperView.layer.shadowRadius = 1;
     styledCaliperView.layer.shadowOpacity = 0.5;
     styledCaliperView.layer.shadowOffset = CGSizeMake(0, 0.5);
+    styledCaliperView.layer.cornerRadius = 1;
     return styledCaliperView;
 }
 
@@ -153,6 +154,15 @@ static const float kAnimationFadeOutDuration = 0.4;
 
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
 {
+    [UIView animateWithDuration:kAnimationFadeOutDuration animations:^{
+        [self resetCaliperRects];
+        [self applyCaliperAndTrackAlpha:0];
+    }];
+}
+
+- (void)cancelTrackingWithEvent:(UIEvent *)event;
+{
+    NSLog(@"cancel");
     [UIView animateWithDuration:kAnimationFadeOutDuration animations:^{
         [self resetCaliperRects];
         [self applyCaliperAndTrackAlpha:0];
