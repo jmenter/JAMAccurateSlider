@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C0FEA392-0D94-49EE-8E4E-E8F1DBEA1827</string>
+	<key>IDESourceControlProjectName</key>
+	<string>JAMAccurateSlider</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D07A9BD9-3406-4B43-8AD9-756AEA8D3ADD</key>
+		<string>https://github.com/jmenter/JAMAccurateSlider.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>JAMAccurateSlider.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D07A9BD9-3406-4B43-8AD9-756AEA8D3ADD</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jmenter/JAMAccurateSlider.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D07A9BD9-3406-4B43-8AD9-756AEA8D3ADD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D07A9BD9-3406-4B43-8AD9-756AEA8D3ADD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>JAMAccurateSlider</string>
+		</dict>
+	</array>
+</dict>
+</plist>
