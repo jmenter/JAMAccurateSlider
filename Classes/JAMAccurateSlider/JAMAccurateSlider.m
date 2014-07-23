@@ -113,43 +113,41 @@ static const float kAnimationFadeOutDuration = 0.4;
     if (verticalTouchDelta > self.frame.size.height * 2.f) {
         CGFloat trackingHorizontalDistance = [touch locationInView:self].x - [touch previousLocationInView:self].x;
         CGFloat valueDivisor = fabsf(verticalTouchDelta / self.frame.size.height);
-        CGFloat valuePerPoint = (self.maximumValue - self.minimumValue) / self.frame.size.width;
+        CGFloat valueRange = self.maximumValue - self.minimumValue;
+        CGFloat valuePerPoint = valueRange / self.frame.size.width;
         self.value += (trackingHorizontalDistance * valuePerPoint) / valueDivisor;
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
         
+        CGFloat leftPercentage = (self.value - self.minimumValue) / valueRange;
+        CGFloat rightPercentage = (self.maximumValue - self.value) / valueRange;
+        CGFloat leftOffset = self.frame.size.width * leftPercentage / (valueDivisor / 2.f);
+        CGFloat rightOffset = self.frame.size.width * rightPercentage / (valueDivisor / 2.f);
+        
+        CGRect leftCaliperRect = self.leftCaliperView.frame;
+        leftCaliperRect.origin.x = (int)(self.frame.origin.x + (self.frame.size.width * leftPercentage) - leftOffset + 2);
+        
+        CGRect leftTrackRect = self.leftTrackView.frame;
+        leftTrackRect.size.width = self.frame.origin.x + (self.frame.size.width * leftPercentage) - leftOffset - 17;
+        
+        CGRect rightCaliperRect = self.rightCaliperView.frame;
+        rightCaliperRect.origin.x = (int)(self.frame.origin.x + self.frame.size.width - self.rightCaliperView.frame.size.width - (self.frame.size.width * rightPercentage) + rightOffset - 2);
+        
+        CGRect rightTrackRect = self.rightTrackView.frame;
+        rightTrackRect.origin.x = self.frame.origin.x + self.frame.size.width - 2 - (self.frame.origin.x + (self.frame.size.width * rightPercentage) - rightOffset - 17);
+        rightTrackRect.size.width = self.frame.origin.x + (self.frame.size.width * rightPercentage) - rightOffset - 17;
         [UIView animateWithDuration:kAnimationIntraFadeDuration animations:^{
-            CGFloat halfValueDivisor = valueDivisor / 2.f;
-            CGFloat valueRange = self.maximumValue - self.minimumValue;
-            
-            CGFloat leftPercentage = (self.value - self.minimumValue) / valueRange;
-            CGFloat rightPercentage = (self.maximumValue - self.value) / valueRange;
-
-            CGFloat leftOffset = self.frame.size.width * leftPercentage / halfValueDivisor;
-            CGFloat rightOffset = self.frame.size.width * rightPercentage / halfValueDivisor;
-            
-            CGRect leftCaliperRect = self.leftCaliperView.frame;
-            leftCaliperRect.origin.x = (int)(self.frame.origin.x + (self.frame.size.width * leftPercentage) - leftOffset + 2);
             self.leftCaliperView.frame = leftCaliperRect;
-            
-            CGRect leftTrackRect = self.leftTrackView.frame;
-            leftTrackRect.size.width = self.frame.origin.x + (self.frame.size.width * leftPercentage) - leftOffset - 17;
             self.leftTrackView.frame = leftTrackRect;
-            
-            CGRect rightCaliperRect = self.rightCaliperView.frame;
-            rightCaliperRect.origin.x = (int)(self.frame.origin.x + self.frame.size.width - self.rightCaliperView.frame.size.width - (self.frame.size.width * rightPercentage) + rightOffset - 2);
             self.rightCaliperView.frame = rightCaliperRect;
-            
-            CGRect rightTrackRect = self.rightTrackView.frame;
-            rightTrackRect.origin.x = self.frame.origin.x + self.frame.size.width - 2 - (self.frame.origin.x + (self.frame.size.width * rightPercentage) - rightOffset - 17);
-            rightTrackRect.size.width = self.frame.origin.x + (self.frame.size.width * rightPercentage) - rightOffset - 17;
             self.rightTrackView.frame = rightTrackRect;
         }];
-        [self sendActionsForControlEvents:UIControlEventValueChanged];
         return YES;
+    } else {
+        [UIView animateWithDuration:kAnimationIntraFadeDuration animations:^{
+            [self resetCaliperRects];
+        }];
+        return [super continueTrackingWithTouch:touch withEvent:event];
     }
-    [UIView animateWithDuration:kAnimationIntraFadeDuration animations:^{
-        [self resetCaliperRects];
-    }];
-    return [super continueTrackingWithTouch:touch withEvent:event];
 }
 
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
@@ -162,7 +160,6 @@ static const float kAnimationFadeOutDuration = 0.4;
 
 - (void)cancelTrackingWithEvent:(UIEvent *)event;
 {
-    NSLog(@"cancel");
     [UIView animateWithDuration:kAnimationFadeOutDuration animations:^{
         [self resetCaliperRects];
         [self applyCaliperAndTrackAlpha:0];
