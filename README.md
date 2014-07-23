@@ -9,6 +9,7 @@ JAMAccurateSlider is a drop-in replacement for UISlider. It behaves exactly the 
 
 1. When the user begins tracking, two small "calipers" appear at the extents of the track.
 2. When the user tracks their finger up (or down) past a certain threshold (which is actually twice the height of the slider), the calipers move in towards the thumb and the thumb (and corresponding slider value) begins to move more slowly and accurately.
-3. The further the user moves their finger from the slider, the greater the possiblity of accuracy.
+3. The calipers are a visual indication of how accurate the slider is, and is a great way for users to intuitively grasp the interaction mechanism.
+4. The further the user moves their finger from the slider, the greater the possiblity of accuracy.
 
 This behavior is completely automatic. We think you'll love it.
