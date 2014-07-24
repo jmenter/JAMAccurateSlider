@@ -127,14 +127,14 @@ static const float kAnimationFadeOutDuration = 0.4;
         leftCaliperRect.origin.x = (int)(self.frame.origin.x + (self.frame.size.width * leftPercentage) - leftOffset + 2);
         
         CGRect leftTrackRect = self.leftTrackView.frame;
-        leftTrackRect.size.width = self.frame.origin.x + (self.frame.size.width * leftPercentage) - leftOffset - 17;
+        leftTrackRect.size.width = (self.frame.size.width * leftPercentage) - leftOffset;
         
         CGRect rightCaliperRect = self.rightCaliperView.frame;
         rightCaliperRect.origin.x = (int)(self.frame.origin.x + self.frame.size.width - self.rightCaliperView.frame.size.width - (self.frame.size.width * rightPercentage) + rightOffset - 2);
         
         CGRect rightTrackRect = self.rightTrackView.frame;
-        rightTrackRect.origin.x = self.frame.origin.x + self.frame.size.width - 2 - (self.frame.origin.x + (self.frame.size.width * rightPercentage) - rightOffset - 17);
-        rightTrackRect.size.width = self.frame.origin.x + (self.frame.size.width * rightPercentage) - rightOffset - 17;
+        rightTrackRect.size.width = (self.frame.size.width * rightPercentage) - rightOffset;
+        rightTrackRect.origin.x = self.frame.origin.x + self.frame.size.width - 2 - rightTrackRect.size.width;
         [UIView animateWithDuration:kAnimationIntraFadeDuration animations:^{
             self.leftCaliperView.frame = leftCaliperRect;
             self.leftTrackView.frame = leftTrackRect;

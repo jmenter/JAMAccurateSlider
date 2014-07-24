@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="-5" maxValue="5" id="Jez-ef-6NL" customClass="JAMAccurateSlider">
-                                <rect key="frame" x="18" y="518" width="284" height="31"/>
+                                <rect key="frame" x="78" y="518" width="179" height="31"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <action selector="sliderDidChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="g9u-KX-l8S"/>
