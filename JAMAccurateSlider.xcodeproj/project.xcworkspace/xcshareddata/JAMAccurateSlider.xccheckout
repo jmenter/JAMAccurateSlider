@@ -10,29 +10,29 @@
 	<string>JAMAccurateSlider</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>D07A9BD9-3406-4B43-8AD9-756AEA8D3ADD</key>
+		<key>2FFCB92253C66665A98D2126743952C4CEF05380</key>
 		<string>https://github.com/jmenter/JAMAccurateSlider.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>JAMAccurateSlider.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>D07A9BD9-3406-4B43-8AD9-756AEA8D3ADD</key>
+		<key>2FFCB92253C66665A98D2126743952C4CEF05380</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jmenter/JAMAccurateSlider.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D07A9BD9-3406-4B43-8AD9-756AEA8D3ADD</string>
+	<string>2FFCB92253C66665A98D2126743952C4CEF05380</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D07A9BD9-3406-4B43-8AD9-756AEA8D3ADD</string>
+			<string>2FFCB92253C66665A98D2126743952C4CEF05380</string>
 			<key>IDESourceControlWCCName</key>
 			<string>JAMAccurateSlider</string>
 		</dict>

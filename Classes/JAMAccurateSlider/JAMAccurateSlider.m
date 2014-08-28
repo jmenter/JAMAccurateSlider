@@ -13,6 +13,35 @@
 
 #import "JAMAccurateSlider.h"
 
+@interface UIView (Utilities)
+- (void)setFrameOrigin:(CGPoint)origin;
+- (void)setFrameSize:(CGSize)size;
+- (void)setFrameWidth:(CGFloat)width;
+- (void)setFrameOriginX:(CGFloat)originX;
+@end
+
+@implementation UIView (Utilities)
+- (void)setFrameOrigin:(CGPoint)origin;
+{
+    self.frame = CGRectMake(origin.x, origin.y, self.frame.size.width, self.frame.size.height);
+}
+
+- (void)setFrameSize:(CGSize)size;
+{
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
+}
+
+- (void)setFrameWidth:(CGFloat)width;
+{
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, self.frame.size.height);
+}
+
+- (void)setFrameOriginX:(CGFloat)originX;
+{
+    self.frame = CGRectMake(originX, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+}
+
+@end
 @interface JAMAccurateSlider ()
 @property (nonatomic) UIView *leftCaliperView;
 @property (nonatomic) UIView *rightCaliperView;
@@ -26,7 +55,17 @@ static const float kAnimationFadeInDuration = 0.2;
 static const float kAnimationIntraFadeDuration = 0.1;
 static const float kAnimationFadeOutDuration = 0.4;
 
+static const float kCaliperWidth = 2.0;
+static const float kCaliperHeight = 28.0;
+
+static const float kHorizontalCaliperTrackEdgeOffset = 2.0;
+static const float kVerticalCaliperEdgeOffset = 1.0;
+
 #pragma mark - View Setup
+
+CGRect CGRectReplaceOrigin(CGRect originalRect, CGPoint newOrigin) {
+    return CGRectMake(newOrigin.x, newOrigin.y, originalRect.size.width, originalRect.size.height);
+}
 
 - (void)didMoveToSuperview;
 {
@@ -36,18 +75,23 @@ static const float kAnimationFadeOutDuration = 0.4;
     self.rightTrackView = [self styledTrackView];
     [self applyCaliperAndTrackAlpha:0];
     
-    [self.superview addSubview:self.leftTrackView];
-    [self.superview addSubview:self.leftCaliperView];
-    [self.superview addSubview:self.rightTrackView];
-    [self.superview addSubview:self.rightCaliperView];
+    for (UIView *view in self.calipersAndTracks) {
+        [self.superview addSubview:view];
+    }
+    
     [self resetCaliperRects];
     
     [self performSelector:@selector(applyTrackColors) withObject:nil afterDelay:0.0];
 }
 
+- (NSArray *)calipersAndTracks;
+{
+    return @[self.leftTrackView, self.leftCaliperView, self.rightTrackView, self.rightCaliperView];
+}
+
 - (UIView *)styledCaliperView;
 {
-    UIView *styledCaliperView = [UIView.alloc initWithFrame:CGRectMake(0, 0, 2, 28)];
+    UIView *styledCaliperView = [UIView.alloc initWithFrame:CGRectMake(0, 0, kCaliperWidth, kCaliperHeight)];
     styledCaliperView.backgroundColor = UIColor.whiteColor;
     styledCaliperView.layer.shadowColor = UIColor.blackColor.CGColor;
     styledCaliperView.layer.shadowRadius = 1;
@@ -66,34 +110,29 @@ static const float kAnimationFadeOutDuration = 0.4;
 
 - (void)applyCaliperAndTrackAlpha:(CGFloat)alpha;
 {
-    self.leftCaliperView.alpha = alpha;
-    self.leftTrackView.alpha = alpha;
-    self.rightCaliperView.alpha = alpha;
-    self.rightTrackView.alpha = alpha;
+    for (UIView *view in self.calipersAndTracks) {
+        view.alpha = alpha;
+    }
 }
 
 - (void)applyTrackColors;
 {
-    self.leftTrackView.backgroundColor = [self.superview.backgroundColor colorWithAlphaComponent:0.75];
+    self.leftTrackView.backgroundColor =
     self.rightTrackView.backgroundColor = [self.superview.backgroundColor colorWithAlphaComponent:0.75];
 }
 
 - (void)resetCaliperRects;
 {
-    self.leftCaliperView.frame = CGRectMake(self.frame.origin.x + 2,
-                                            self.frame.origin.y + 1,
-                                            self.leftCaliperView.frame.size.width,
-                                            self.leftCaliperView.frame.size.height);
-    self.leftTrackView.frame = CGRectMake(self.frame.origin.x + 2, self.frame.origin.y + 15,
-                                          2, 2);
-    self.rightCaliperView.frame = CGRectMake(self.frame.origin.x + self.frame.size.width -
-                                             self.rightCaliperView.frame.size.width - 2,
-                                             self.frame.origin.y + 1,
-                                             self.rightCaliperView.frame.size.width,
-                                             self.rightCaliperView.frame.size.height);
-    self.rightTrackView.frame = CGRectMake(self.frame.origin.x + self.frame.size.width - 2,
-                                           self.frame.origin.y + 15,
-                                           -2, 2);
+    CGPoint frameOrigin = self.frame.origin;
+    CGSize frameSize = self.frame.size;
+    CGSize caliperSize = self.leftCaliperView.frame.size;
+    [self.leftCaliperView setFrameOrigin:CGPointMake(frameOrigin.x + kHorizontalCaliperTrackEdgeOffset,
+                                                     frameOrigin.y + kVerticalCaliperEdgeOffset)];
+    self.leftTrackView.frame = CGRectMake(frameOrigin.x + kHorizontalCaliperTrackEdgeOffset,
+                                          frameOrigin.y + 15, 2, 2);
+    [self.rightCaliperView setFrameOrigin:CGPointMake(frameOrigin.x + frameSize.width - caliperSize.width - 2,
+                                                      frameOrigin.y + 1)];
+    self.rightTrackView.frame = CGRectMake(frameOrigin.x + frameSize.width - 2, frameOrigin.y + 15, -2, 2);
 }
 
 #pragma mark - UIControl Touch Tracking
@@ -109,37 +148,33 @@ static const float kAnimationFadeOutDuration = 0.4;
 
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
 {
-    CGFloat verticalTouchDelta = fabsf([touch locationInView:self].y - (self.frame.size.height / 2.f));
-    if (verticalTouchDelta > self.frame.size.height * 2.f) {
+    CGSize frameSize = self.frame.size;
+    CGPoint frameOrigin = self.frame.origin;
+    
+    CGFloat verticalTouchDelta = fabsf([touch locationInView:self].y - (frameSize.height / 2.f));
+    BOOL touchExceededThreshold = verticalTouchDelta > frameSize.height * 2.f;
+    
+    if (touchExceededThreshold) {
         CGFloat trackingHorizontalDistance = [touch locationInView:self].x - [touch previousLocationInView:self].x;
-        CGFloat valueDivisor = fabsf(verticalTouchDelta / self.frame.size.height);
+        CGFloat valueDivisor = fabsf(verticalTouchDelta / frameSize.height);
         CGFloat valueRange = self.maximumValue - self.minimumValue;
-        CGFloat valuePerPoint = valueRange / self.frame.size.width;
+        CGFloat valuePerPoint = valueRange / frameSize.width;
+        
         self.value += (trackingHorizontalDistance * valuePerPoint) / valueDivisor;
         [self sendActionsForControlEvents:UIControlEventValueChanged];
         
         CGFloat leftPercentage = (self.value - self.minimumValue) / valueRange;
         CGFloat rightPercentage = (self.maximumValue - self.value) / valueRange;
-        CGFloat leftOffset = self.frame.size.width * leftPercentage / (valueDivisor / 2.f);
-        CGFloat rightOffset = self.frame.size.width * rightPercentage / (valueDivisor / 2.f);
-        
-        CGRect leftCaliperRect = self.leftCaliperView.frame;
-        leftCaliperRect.origin.x = (int)(self.frame.origin.x + (self.frame.size.width * leftPercentage) - leftOffset + 2);
-        
-        CGRect leftTrackRect = self.leftTrackView.frame;
-        leftTrackRect.size.width = (self.frame.size.width * leftPercentage) - leftOffset;
-        
-        CGRect rightCaliperRect = self.rightCaliperView.frame;
-        rightCaliperRect.origin.x = (int)(self.frame.origin.x + self.frame.size.width - self.rightCaliperView.frame.size.width - (self.frame.size.width * rightPercentage) + rightOffset - 2);
-        
-        CGRect rightTrackRect = self.rightTrackView.frame;
-        rightTrackRect.size.width = (self.frame.size.width * rightPercentage) - rightOffset;
-        rightTrackRect.origin.x = self.frame.origin.x + self.frame.size.width - 2 - rightTrackRect.size.width;
+        CGFloat leftOffset = frameSize.width * leftPercentage / (valueDivisor / 2.f);
+        CGFloat rightOffset = frameSize.width * rightPercentage / (valueDivisor / 2.f);
+
         [UIView animateWithDuration:kAnimationIntraFadeDuration animations:^{
-            self.leftCaliperView.frame = leftCaliperRect;
-            self.leftTrackView.frame = leftTrackRect;
-            self.rightCaliperView.frame = rightCaliperRect;
-            self.rightTrackView.frame = rightTrackRect;
+            [self.leftCaliperView setFrameOriginX:(int)(frameOrigin.x + (frameSize.width * leftPercentage) - leftOffset + 2)];
+            [self.leftTrackView setFrameWidth:(frameSize.width * leftPercentage) - leftOffset];
+            
+            [self.rightCaliperView setFrameOriginX:(int)(frameOrigin.x + frameSize.width - kCaliperWidth - (frameSize.width * rightPercentage) + rightOffset - 2)];
+            [self.rightTrackView setFrameOriginX:frameOrigin.x + frameSize.width - 2 - self.rightTrackView.frame.size.width];
+            [self.rightTrackView setFrameWidth:(frameSize.width * rightPercentage) - rightOffset];
         }];
         return YES;
     } else {
@@ -152,13 +187,15 @@ static const float kAnimationFadeOutDuration = 0.4;
 
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
 {
-    [UIView animateWithDuration:kAnimationFadeOutDuration animations:^{
-        [self resetCaliperRects];
-        [self applyCaliperAndTrackAlpha:0];
-    }];
+    [self finishTracking];
 }
 
 - (void)cancelTrackingWithEvent:(UIEvent *)event;
+{
+    [self finishTracking];
+}
+
+- (void)finishTracking;
 {
     [UIView animateWithDuration:kAnimationFadeOutDuration animations:^{
         [self resetCaliperRects];
