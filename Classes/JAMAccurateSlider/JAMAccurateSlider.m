@@ -13,24 +13,23 @@
 
 #import "JAMAccurateSlider.h"
 
-@implementation UIView (Utilities)
-- (void)setFrameOrigin:(CGPoint)origin {
+@implementation UIView (FrameUtilities)
+- (void)setFrameOrigin:(CGPoint)origin;
+{
     self.frame = CGRectMake(origin.x, origin.y, self.frame.size.width, self.frame.size.height);
 }
 
-- (void)setFrameOriginX:(CGFloat)originX {
+- (void)setFrameOriginX:(CGFloat)originX;
+{
     self.frame = CGRectMake(originX, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
 }
 
-- (void)setFrameSize:(CGSize)size {
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
-}
-
-- (void)setFrameWidth:(CGFloat)width {
+- (void)setFrameWidth:(CGFloat)width;
+{
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, self.frame.size.height);
 }
-
 @end
+
 @interface JAMAccurateSlider ()
 @property (nonatomic) UIView *leftCaliperView;
 @property (nonatomic) UIView *rightCaliperView;
