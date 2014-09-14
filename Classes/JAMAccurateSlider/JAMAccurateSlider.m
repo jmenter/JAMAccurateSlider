@@ -113,9 +113,8 @@ static void * kObservationContext = &kObservationContext;
 - (void)applyTrackColors;
 {
     UIColor *background = self.superview.backgroundColor ?: UIColor.whiteColor;
-    if ([background isEqual:UIColor.clearColor]) {
-        background = UIColor.whiteColor;
-    }
+    background = [background isEqual:UIColor.clearColor] ? UIColor.whiteColor : background;
+    
     self.leftTrackView.backgroundColor = [background colorWithAlphaComponent:0.75];
     self.rightTrackView.backgroundColor = [background colorWithAlphaComponent:0.75];
 }
