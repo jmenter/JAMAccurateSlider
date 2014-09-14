@@ -13,31 +13,20 @@
 
 #import "JAMAccurateSlider.h"
 
-@interface UIView (Utilities)
-- (void)setFrameOrigin:(CGPoint)origin;
-- (void)setFrameOriginX:(CGFloat)originX;
-- (void)setFrameSize:(CGSize)size;
-- (void)setFrameWidth:(CGFloat)width;
-@end
-
 @implementation UIView (Utilities)
-- (void)setFrameOrigin:(CGPoint)origin;
-{
+- (void)setFrameOrigin:(CGPoint)origin {
     self.frame = CGRectMake(origin.x, origin.y, self.frame.size.width, self.frame.size.height);
 }
 
-- (void)setFrameOriginX:(CGFloat)originX;
-{
+- (void)setFrameOriginX:(CGFloat)originX {
     self.frame = CGRectMake(originX, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
 }
 
-- (void)setFrameSize:(CGSize)size;
-{
+- (void)setFrameSize:(CGSize)size {
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
 }
 
-- (void)setFrameWidth:(CGFloat)width;
-{
+- (void)setFrameWidth:(CGFloat)width {
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, self.frame.size.height);
 }
 
@@ -62,10 +51,13 @@ static const float kTrackInitialWidth = 2.0;
 static const float kHorizontalCaliperTrackEdgeOffset = 2.0;
 static const float kVerticalCaliperEdgeOffset = 1.0;
 
+static void * kObservationContext = &kObservationContext;
+
 #pragma mark - View Setup
 
 - (void)didMoveToSuperview;
 {
+    [self.superview addObserver:self forKeyPath:@"backgroundColor" options:NSKeyValueObservingOptionOld context:kObservationContext];
     self.trackRect = [self trackRectForBounds:self.bounds];
     self.leftCaliperView = [self styledCaliperView];
     self.rightCaliperView = [self styledCaliperView];
@@ -73,7 +65,7 @@ static const float kVerticalCaliperEdgeOffset = 1.0;
     self.rightTrackView = [self styledTrackView];
     self.caliperAndTrackAlpha = 0;
     
-    for (UIView *view in self.calipersAndTracks) {
+    for (UIView *view in self.caliperAndTrackViews) {
         [self.superview addSubview:view];
     }
     
@@ -81,7 +73,13 @@ static const float kVerticalCaliperEdgeOffset = 1.0;
     [self performSelector:@selector(applyTrackColors) withObject:nil afterDelay:0.0];
 }
 
-- (NSArray *)calipersAndTracks;
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (context == kObservationContext) {
+        [self applyTrackColors];
+    }
+}
+
+- (NSArray *)caliperAndTrackViews;
 {
     return @[self.leftTrackView, self.leftCaliperView, self.rightTrackView, self.rightCaliperView];
 }
@@ -107,15 +105,19 @@ static const float kVerticalCaliperEdgeOffset = 1.0;
 
 - (void)setCaliperAndTrackAlpha:(CGFloat)alpha;
 {
-    for (UIView *view in self.calipersAndTracks) {
+    for (UIView *view in self.caliperAndTrackViews) {
         view.alpha = alpha;
     }
 }
 
 - (void)applyTrackColors;
 {
-    self.leftTrackView.backgroundColor =
-    self.rightTrackView.backgroundColor = [self.superview.backgroundColor colorWithAlphaComponent:0.75];
+    UIColor *background = self.superview.backgroundColor ?: UIColor.whiteColor;
+    if ([background isEqual:UIColor.clearColor]) {
+        background = UIColor.whiteColor;
+    }
+    self.leftTrackView.backgroundColor = [background colorWithAlphaComponent:0.75];
+    self.rightTrackView.backgroundColor = [background colorWithAlphaComponent:0.75];
 }
 
 - (void)resetCaliperRects;
@@ -127,14 +129,11 @@ static const float kVerticalCaliperEdgeOffset = 1.0;
     self.leftCaliperView.frameOrigin = CGPointMake(x + kHorizontalCaliperTrackEdgeOffset, y + kVerticalCaliperEdgeOffset);
     self.rightCaliperView.frameOrigin = CGPointMake(x + width - kCaliperWidth - 2, y + kVerticalCaliperEdgeOffset);
     
-    self.leftTrackView.frame = CGRectMake(x + self.trackRect.origin.x,
-                                          y + self.trackRect.origin.y,
-                                          kTrackInitialWidth,
-                                          self.trackRect.size.height);
+    self.leftTrackView.frame = CGRectMake(x + self.trackRect.origin.x, y + self.trackRect.origin.y,
+                                          kTrackInitialWidth, self.trackRect.size.height);
     self.rightTrackView.frame = CGRectMake(x + width - kTrackInitialWidth - self.trackRect.origin.x,
                                            y + self.trackRect.origin.y,
-                                           kTrackInitialWidth,
-                                           self.trackRect.size.height);
+                                           kTrackInitialWidth, self.trackRect.size.height);
 }
 
 #pragma mark - UIControl Touch Tracking
@@ -159,7 +158,7 @@ static const float kVerticalCaliperEdgeOffset = 1.0;
         [UIView animateWithDuration:kAnimationFadeOutDuration animations:^{ [self resetCaliperRects]; }];
         return [super continueTrackingWithTouch:touch withEvent:event];
     }
-
+    
     CGFloat trackingHorizontalDelta = [touch locationInView:self].x - [touch previousLocationInView:self].x;
     CGFloat valueDivisor = fabsf(verticalTouchDelta / height);
     CGFloat valueRange = self.maximumValue - self.minimumValue;
@@ -173,6 +172,7 @@ static const float kVerticalCaliperEdgeOffset = 1.0;
     CGFloat leftOffset = width * leftPercentage / (valueDivisor / 2.f);
     CGFloat rightOffset = width * rightPercentage / (valueDivisor / 2.f);
     
+    // int values make the calipers and track align to point values just like the slider thumb
     self.leftCaliperView.frameOriginX = (int)(x + (width * leftPercentage) - leftOffset + 2);
     self.rightCaliperView.frameOriginX = (int)(x + width - kCaliperWidth - (width * rightPercentage) + rightOffset - 2);
     self.leftTrackView.frameWidth = (int)((width * leftPercentage) - leftOffset + 1);
@@ -198,6 +198,10 @@ static const float kVerticalCaliperEdgeOffset = 1.0;
         [self resetCaliperRects];
         self.caliperAndTrackAlpha = 0;
     }];
+}
+
+- (void)dealloc {
+    [self.superview removeObserver:self forKeyPath:@"backgroundColor"];
 }
 
 @end
