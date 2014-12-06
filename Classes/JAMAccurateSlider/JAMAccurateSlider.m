@@ -127,11 +127,8 @@ static void * kObservationContext = &kObservationContext;
     self.leftCaliperView.frameOrigin = CGPointMake(x + kHorizontalCaliperTrackEdgeOffset, y + kVerticalCaliperEdgeOffset);
     self.rightCaliperView.frameOrigin = CGPointMake(x + width - kCaliperWidth - 2, y + kVerticalCaliperEdgeOffset);
     
-    self.leftTrackView.frame = CGRectMake(x + self.trackRect.origin.x, y + self.trackRect.origin.y,
-                                          kTrackInitialWidth, self.trackRect.size.height);
-    self.rightTrackView.frame = CGRectMake(x + width - kTrackInitialWidth - self.trackRect.origin.x,
-                                           y + self.trackRect.origin.y,
-                                           kTrackInitialWidth, self.trackRect.size.height);
+    self.leftTrackView.frame = CGRectMake(x + self.trackRect.origin.x, y + self.trackRect.origin.y, kTrackInitialWidth, self.trackRect.size.height);
+    self.rightTrackView.frame = CGRectMake(x + width - kTrackInitialWidth - self.trackRect.origin.x, y + self.trackRect.origin.y, kTrackInitialWidth, self.trackRect.size.height);
 }
 
 #pragma mark - UIControl Touch Tracking
@@ -139,9 +136,7 @@ static void * kObservationContext = &kObservationContext;
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
 {
     [self resetCaliperRects];
-    [UIView animateWithDuration:kAnimationFadeInDuration animations:^{
-        self.caliperAndTrackAlpha = 1;
-    }];
+    [UIView animateWithDuration:kAnimationFadeInDuration animations:^{ self.caliperAndTrackAlpha = 1; }];
     return [super beginTrackingWithTouch:touch withEvent:event];
 }
 
