@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "A UISlider subclass that enables more accurate value selection."
 
   s.description  = <<-DESC
-                   A UISlider subclass that enables more accurate value selection.
+                   This is a drop-in replacement for UISlider. It allows more accurate value selection when the user drags vertically. Visual feedback helps drive the accurate behavior home. Give it a try!
                    DESC
   s.homepage     = "https://github.com/jmenter/JAMAccurateSlider"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
