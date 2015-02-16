@@ -14,7 +14,7 @@
 		<string>https://github.com/jmenter/JAMAccurateSlider.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>JAMAccurateSlider.xcodeproj/project.xcworkspace</string>
+	<string>JAMAccurateSlider.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>2FFCB92253C66665A98D2126743952C4CEF05380</key>
