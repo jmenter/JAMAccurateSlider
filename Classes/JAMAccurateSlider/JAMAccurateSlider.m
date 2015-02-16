@@ -50,18 +50,15 @@ static const float kTrackInitialWidth = 2.0;
 static const float kHorizontalCaliperTrackEdgeOffset = 2.0;
 static const float kVerticalCaliperEdgeOffset = 1.0;
 
-static void * kObservationContext = &kObservationContext;
-
 #pragma mark - View Setup
 
 - (void)didMoveToSuperview;
 {
-    [self.superview addObserver:self forKeyPath:@"backgroundColor" options:NSKeyValueObservingOptionOld context:kObservationContext];
     self.trackRect = [self trackRectForBounds:self.bounds];
-    self.leftCaliperView = [self styledCaliperView];
-    self.rightCaliperView = [self styledCaliperView];
-    self.leftTrackView = [self styledTrackView];
-    self.rightTrackView = [self styledTrackView];
+    self.leftCaliperView = [self createStyledCaliperView];
+    self.rightCaliperView = [self createStyledCaliperView];
+    self.leftTrackView = [self createStyledTrackView];
+    self.rightTrackView = [self createStyledTrackView];
     self.caliperAndTrackAlpha = 0;
     
     for (UIView *view in self.caliperAndTrackViews) {
@@ -69,21 +66,10 @@ static void * kObservationContext = &kObservationContext;
     }
     
     [self resetCaliperRects];
-    [self performSelector:@selector(applyTrackColors) withObject:nil afterDelay:0.0];
+    [self performSelector:@selector(applyTrackBackgroundColors) withObject:nil afterDelay:0.0];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (context == kObservationContext) {
-        [self applyTrackColors];
-    }
-}
-
-- (NSArray *)caliperAndTrackViews;
-{
-    return @[self.leftTrackView, self.leftCaliperView, self.rightTrackView, self.rightCaliperView];
-}
-
-- (UIView *)styledCaliperView;
+- (UIView *)createStyledCaliperView;
 {
     UIView *styledCaliperView = [UIView.alloc initWithFrame:CGRectMake(0, 0, kCaliperWidth, kCaliperHeight)];
     styledCaliperView.backgroundColor = UIColor.whiteColor;
@@ -95,7 +81,7 @@ static void * kObservationContext = &kObservationContext;
     return styledCaliperView;
 }
 
-- (UIView *)styledTrackView;
+- (UIView *)createStyledTrackView;
 {
     UIView *styledTrackView = UIView.new;
     styledTrackView.layer.cornerRadius = 1;
@@ -109,7 +95,12 @@ static void * kObservationContext = &kObservationContext;
     }
 }
 
-- (void)applyTrackColors;
+- (NSArray *)caliperAndTrackViews;
+{
+    return @[self.leftTrackView, self.leftCaliperView, self.rightTrackView, self.rightCaliperView];
+}
+
+- (void)applyTrackBackgroundColors;
 {
     UIColor *background = self.superview.backgroundColor ?: UIColor.whiteColor;
     background = [background isEqual:UIColor.clearColor] ? UIColor.whiteColor : background;
@@ -165,7 +156,7 @@ static void * kObservationContext = &kObservationContext;
     CGFloat leftOffset = width * leftPercentage / (valueDivisor / 2.f);
     CGFloat rightOffset = width * rightPercentage / (valueDivisor / 2.f);
     
-    // int values make the calipers and track align to point values just like the slider thumb
+    // int values make the calipers and track align to point values, mimicing the behavior of the UISlider thumb
     self.leftCaliperView.frameOriginX = (int)(x + (width * leftPercentage) - leftOffset + 2);
     self.rightCaliperView.frameOriginX = (int)(x + width - kCaliperWidth - (width * rightPercentage) + rightOffset - 2);
     self.leftTrackView.frameWidth = (int)((width * leftPercentage) - leftOffset + 1);
@@ -191,10 +182,6 @@ static void * kObservationContext = &kObservationContext;
         [self resetCaliperRects];
         self.caliperAndTrackAlpha = 0;
     }];
-}
-
-- (void)dealloc {
-    [self.superview removeObserver:self forKeyPath:@"backgroundColor"];
 }
 
 @end
