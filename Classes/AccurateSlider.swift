@@ -120,7 +120,7 @@ class AccurateSlider: UISlider {
     }
     
     private func finishTracking() {
-        UIView.animateWithDuration(0.4, animations: { () -> Void in
+        UIView.animateWithDuration(0.4, animations: {
             self.resetCaliperRects()
             (self.calipers + self.tracks).map({ $0.alpha = 0 })
         })
