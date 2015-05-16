@@ -21,14 +21,12 @@ class AccurateSlider: UISlider {
     private var trackRect = CGRectZero
     private let calipers:[UIView]
     private let tracks:[UIView]
-    private let calipersAndTracks:[UIView]
     
     //MARK: - Setup Etc.
     
     required init(coder aDecoder: NSCoder) {
         calipers = [leftCaliper, rightCaliper]
         tracks = [leftTrack, rightTrack]
-        calipersAndTracks = calipers + tracks
         super.init(coder: aDecoder)
     }
     
@@ -38,8 +36,8 @@ class AccurateSlider: UISlider {
         calipers.map({ self.styleCaliperView($0) })
         tracks.map({ self.styleTrackView($0) })
         
-        calipersAndTracks.map({ $0.alpha = 0 })
-        calipersAndTracks.map({ self.superview?.addSubview($0) })
+        (calipers + tracks).map({ $0.alpha = 0 })
+        (calipers + tracks).map({ self.superview?.addSubview($0) })
         
         resetCaliperRects()
     }
@@ -72,7 +70,7 @@ class AccurateSlider: UISlider {
     
     override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool {
         resetCaliperRects()
-        UIView.animateWithDuration(0.2, animations: { self.calipersAndTracks.map({ $0.alpha = 1 }) })
+        UIView.animateWithDuration(0.2, animations: { (calipers + tracks).map({ $0.alpha = 1 }) })
         return super.beginTrackingWithTouch(touch, withEvent: event)
     }
     
@@ -124,7 +122,7 @@ class AccurateSlider: UISlider {
     private func finishTracking() {
         UIView.animateWithDuration(0.4, animations: { () -> Void in
             self.resetCaliperRects()
-            self.calipersAndTracks.map({ $0.alpha = 0 })
+            (self.calipers + self.tracks).map({ $0.alpha = 0 })
         })
     }
 }
