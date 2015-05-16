@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "JAMAccurateSlider"
-  s.version      = "1.1.1"
+  s.version      = "1.2"
   s.summary      = "A UISlider subclass that enables more accurate value selection."
 
   s.description  = <<-DESC
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.social_media_url = "http://twitter.com/jmenter"
   s.platform     = :ios, '7.0'
   s.source       = { :git => "https://github.com/jmenter/JAMAccurateSlider.git", :tag => s.version.to_s }
-  s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
+  s.source_files  = 'Classes', 'Classes/**/*.{h,m,swift}'
   s.requires_arc = true
 
 end
