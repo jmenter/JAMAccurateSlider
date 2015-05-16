@@ -136,7 +136,7 @@ static const float kVerticalCaliperEdgeOffset = 1.0;
     CGFloat width = self.frame.size.width;
     CGFloat height = self.frame.size.height;
     CGFloat x = self.frame.origin.x;
-    CGFloat verticalTouchDelta = fabsf([touch locationInView:self].y - (height / 2.f));
+    CGFloat verticalTouchDelta = fabs([touch locationInView:self].y - (height / 2.f));
     
     if (verticalTouchDelta < height * 2.f) { // normal tracking
         [UIView animateWithDuration:kAnimationFadeOutDuration animations:^{ [self resetCaliperRects]; }];
@@ -144,7 +144,7 @@ static const float kVerticalCaliperEdgeOffset = 1.0;
     }
     
     CGFloat trackingHorizontalDelta = [touch locationInView:self].x - [touch previousLocationInView:self].x;
-    CGFloat valueDivisor = fabsf(verticalTouchDelta / height);
+    CGFloat valueDivisor = fabs(verticalTouchDelta / height);
     CGFloat valueRange = self.maximumValue - self.minimumValue;
     CGFloat valuePerPoint = valueRange / width;
     
