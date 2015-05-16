@@ -14,7 +14,6 @@
 		6354FB46197F210000390034 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB45197F210000390034 /* main.m */; };
 		6354FB4A197F210000390034 /* JAMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB49197F210000390034 /* JAMAppDelegate.m */; };
 		6354FB4D197F210000390034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354FB4B197F210000390034 /* Main.storyboard */; };
-		6354FB50197F210000390034 /* JAMAccurateSlider-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB4F197F210000390034 /* JAMAccurateSlider-Bridging-Header.h */; };
 		6354FB52197F210000390034 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6354FB51197F210000390034 /* Images.xcassets */; };
 		6354FB72197F218C00390034 /* JAMAccurateSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB71197F218C00390034 /* JAMAccurateSlider.m */; };
 		635EEB351B06C25D007DEB33 /* AccurateSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635EEB341B06C25D007DEB33 /* AccurateSlider.swift */; };
@@ -203,7 +202,6 @@
 				635EEB351B06C25D007DEB33 /* AccurateSlider.swift in Sources */,
 				6354FB72197F218C00390034 /* JAMAccurateSlider.m in Sources */,
 				6354FB4A197F210000390034 /* JAMAppDelegate.m in Sources */,
-				6354FB50197F210000390034 /* JAMAccurateSlider-Bridging-Header.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +306,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Prefix.pch";
 				INFOPLIST_FILE = "JAMAccurateSlider/JAMAccurateSlider-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Bridging-Header.h";
@@ -327,7 +325,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Prefix.pch";
 				INFOPLIST_FILE = "JAMAccurateSlider/JAMAccurateSlider-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Bridging-Header.h";
