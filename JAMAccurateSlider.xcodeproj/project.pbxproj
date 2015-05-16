@@ -14,7 +14,7 @@
 		6354FB46197F210000390034 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB45197F210000390034 /* main.m */; };
 		6354FB4A197F210000390034 /* JAMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB49197F210000390034 /* JAMAppDelegate.m */; };
 		6354FB4D197F210000390034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354FB4B197F210000390034 /* Main.storyboard */; };
-		6354FB50197F210000390034 /* JAMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB4F197F210000390034 /* JAMViewController.m */; };
+		6354FB50197F210000390034 /* JAMAccurateSlider-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB4F197F210000390034 /* JAMAccurateSlider-Bridging-Header.h */; };
 		6354FB52197F210000390034 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6354FB51197F210000390034 /* Images.xcassets */; };
 		6354FB72197F218C00390034 /* JAMAccurateSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB71197F218C00390034 /* JAMAccurateSlider.m */; };
 		635EEB351B06C25D007DEB33 /* AccurateSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635EEB341B06C25D007DEB33 /* AccurateSlider.swift */; };
@@ -33,12 +33,11 @@
 		6354FB49197F210000390034 /* JAMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JAMAppDelegate.m; sourceTree = "<group>"; };
 		6354FB4C197F210000390034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6354FB4E197F210000390034 /* JAMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JAMViewController.h; sourceTree = "<group>"; };
-		6354FB4F197F210000390034 /* JAMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JAMViewController.m; sourceTree = "<group>"; };
+		6354FB4F197F210000390034 /* JAMAccurateSlider-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JAMAccurateSlider-Bridging-Header.h"; sourceTree = "<group>"; };
 		6354FB51197F210000390034 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6354FB70197F218C00390034 /* JAMAccurateSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAMAccurateSlider.h; sourceTree = "<group>"; };
 		6354FB71197F218C00390034 /* JAMAccurateSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAMAccurateSlider.m; sourceTree = "<group>"; };
-		635EEB331B06C25C007DEB33 /* JAMAccurateSlider-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JAMAccurateSlider-Bridging-Header.h"; sourceTree = "<group>"; };
-		635EEB341B06C25D007DEB33 /* AccurateSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccurateSlider.swift; sourceTree = "<group>"; };
+		635EEB341B06C25D007DEB33 /* AccurateSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccurateSlider.swift; path = AccurateSlider/AccurateSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +88,6 @@
 				6354FB48197F210000390034 /* JAMAppDelegate.h */,
 				6354FB49197F210000390034 /* JAMAppDelegate.m */,
 				6354FB4E197F210000390034 /* JAMViewController.h */,
-				6354FB4F197F210000390034 /* JAMViewController.m */,
 				6354FB4B197F210000390034 /* Main.storyboard */,
 				6354FB51197F210000390034 /* Images.xcassets */,
 				6354FB40197F210000390034 /* Supporting Files */,
@@ -100,6 +98,7 @@
 		6354FB40197F210000390034 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6354FB4F197F210000390034 /* JAMAccurateSlider-Bridging-Header.h */,
 				6354FB41197F210000390034 /* JAMAccurateSlider-Info.plist */,
 				6354FB42197F210000390034 /* InfoPlist.strings */,
 				6354FB45197F210000390034 /* main.m */,
@@ -111,9 +110,8 @@
 		6354FB6E197F218C00390034 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				63E1252C1B077FE200B9A19A /* AccurateSlider */,
 				6354FB6F197F218C00390034 /* JAMAccurateSlider */,
-				635EEB341B06C25D007DEB33 /* AccurateSlider.swift */,
-				635EEB331B06C25C007DEB33 /* JAMAccurateSlider-Bridging-Header.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -125,6 +123,14 @@
 				6354FB71197F218C00390034 /* JAMAccurateSlider.m */,
 			);
 			path = JAMAccurateSlider;
+			sourceTree = "<group>";
+		};
+		63E1252C1B077FE200B9A19A /* AccurateSlider */ = {
+			isa = PBXGroup;
+			children = (
+				635EEB341B06C25D007DEB33 /* AccurateSlider.swift */,
+			);
+			name = AccurateSlider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,7 +203,7 @@
 				635EEB351B06C25D007DEB33 /* AccurateSlider.swift in Sources */,
 				6354FB72197F218C00390034 /* JAMAccurateSlider.m in Sources */,
 				6354FB4A197F210000390034 /* JAMAppDelegate.m in Sources */,
-				6354FB50197F210000390034 /* JAMViewController.m in Sources */,
+				6354FB50197F210000390034 /* JAMAccurateSlider-Bridging-Header.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +311,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Classes/JAMAccurateSlider-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -324,7 +330,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Classes/JAMAccurateSlider-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

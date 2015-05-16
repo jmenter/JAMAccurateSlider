@@ -27,7 +27,7 @@
 
 - (IBAction)slider2Changed:(UISlider *)sender;
 {
-    self.label2.text = [NSString stringWithFormat:@"slider value: %0.3f", self.slider2.value];
+    self.label2.text = [NSString stringWithFormat:@"swift slider value: %0.3f", self.slider2.value];
 }
 
 @end
