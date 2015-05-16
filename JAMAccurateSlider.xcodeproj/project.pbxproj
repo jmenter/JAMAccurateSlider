@@ -17,6 +17,7 @@
 		6354FB50197F210000390034 /* JAMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB4F197F210000390034 /* JAMViewController.m */; };
 		6354FB52197F210000390034 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6354FB51197F210000390034 /* Images.xcassets */; };
 		6354FB72197F218C00390034 /* JAMAccurateSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6354FB71197F218C00390034 /* JAMAccurateSlider.m */; };
+		635EEB351B06C25D007DEB33 /* AccurateSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635EEB341B06C25D007DEB33 /* AccurateSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		6354FB51197F210000390034 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6354FB70197F218C00390034 /* JAMAccurateSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAMAccurateSlider.h; sourceTree = "<group>"; };
 		6354FB71197F218C00390034 /* JAMAccurateSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAMAccurateSlider.m; sourceTree = "<group>"; };
+		635EEB331B06C25C007DEB33 /* JAMAccurateSlider-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JAMAccurateSlider-Bridging-Header.h"; sourceTree = "<group>"; };
+		635EEB341B06C25D007DEB33 /* AccurateSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccurateSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				6354FB6F197F218C00390034 /* JAMAccurateSlider */,
+				635EEB341B06C25D007DEB33 /* AccurateSlider.swift */,
+				635EEB331B06C25C007DEB33 /* JAMAccurateSlider-Bridging-Header.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6354FB46197F210000390034 /* main.m in Sources */,
+				635EEB351B06C25D007DEB33 /* AccurateSlider.swift in Sources */,
 				6354FB72197F218C00390034 /* JAMAccurateSlider.m in Sources */,
 				6354FB4A197F210000390034 /* JAMAppDelegate.m in Sources */,
 				6354FB50197F210000390034 /* JAMViewController.m in Sources */,
@@ -292,11 +298,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Prefix.pch";
 				INFOPLIST_FILE = "JAMAccurateSlider/JAMAccurateSlider-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/JAMAccurateSlider-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -307,11 +317,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JAMAccurateSlider/JAMAccurateSlider-Prefix.pch";
 				INFOPLIST_FILE = "JAMAccurateSlider/JAMAccurateSlider-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/JAMAccurateSlider-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
