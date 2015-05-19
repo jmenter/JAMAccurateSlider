@@ -16,9 +16,10 @@ class AccurateSlider: UISlider {
 
     private var leftCaliper = UIView()
     private var rightCaliper = UIView()
+    
     private var leftTrack = UIView()
     private var rightTrack = UIView()
-    private var trackRect = CGRectZero
+    
     private let calipers:[UIView]
     private let tracks:[UIView]
     
@@ -31,15 +32,15 @@ class AccurateSlider: UISlider {
     }
     
     override func didMoveToSuperview() {
-        trackRect = trackRectForBounds(bounds)
+        super.didMoveToSuperview()
         (tracks + calipers).map({ $0.alpha = 0 })
         (tracks + calipers).map({ self.superview?.addSubview($0) })
-        resetCaliperRects()
         
         dispatch_after(dispatch_time_t(0.0) , dispatch_get_main_queue()) {
             self.calipers.map({ self.styleCaliperView($0) })
             self.tracks.map({ self.styleTrackView($0) })
         }
+        resetCaliperRects()
     }
     
     private func styleCaliperView(caliperView:UIView) {
@@ -62,8 +63,16 @@ class AccurateSlider: UISlider {
         leftCaliper.frame.origin.y = frame.origin.y + 1
         rightCaliper.frame.origin.x = frame.origin.x + frame.size.width - 4
         rightCaliper.frame.origin.y = frame.origin.y + 1
-        leftTrack.frame = CGRect(x: frame.origin.x + trackRect.origin.x, y: frame.origin.y + trackRect.origin.y, width: 2, height: trackRect.size.height)
-        rightTrack.frame = CGRect(x: frame.origin.x + frame.size.width - 2 - trackRect.origin.x, y: frame.origin.y + trackRect.origin.y, width: 2, height: trackRect.size.height)
+        
+        leftTrack.frame = CGRect(x: frame.origin.x + trackRectForBounds(bounds).origin.x,
+                                 y: frame.origin.y + trackRectForBounds(bounds).origin.y,
+                             width: 2,
+                            height: trackRectForBounds(bounds).size.height)
+        
+        rightTrack.frame = CGRect(x: frame.origin.x + frame.size.width - 2 - trackRectForBounds(bounds).origin.x,
+                                  y: frame.origin.y + trackRectForBounds(bounds).origin.y,
+                              width: 2,
+                             height: trackRectForBounds(bounds).size.height)
     }
     
     private func finishTracking() {
@@ -89,6 +98,7 @@ class AccurateSlider: UISlider {
             return super.continueTrackingWithTouch(touch, withEvent: event)
         }
         
+        // Set more accurate value on the slider.
         let trackingHorizontalDelta = touch.locationInView(self).x - touch.previousLocationInView(self).x
         let valueDivisor = fabs(verticalTouchDelta / frame.size.height)
         let valueRange = CGFloat(maximumValue - minimumValue)
@@ -96,6 +106,7 @@ class AccurateSlider: UISlider {
         value += Float((trackingHorizontalDelta * valuePerPoint) / valueDivisor)
         sendActionsForControlEvents(.ValueChanged)
         
+        // Calculate caliper and track positions
         let leftPercentage = CGFloat(value - minimumValue) / valueRange
         let rightPercentage = CGFloat(maximumValue - value) / valueRange
         let leftOffset = frame.size.width * leftPercentage / (valueDivisor / 2)
