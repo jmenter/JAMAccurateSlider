@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "JAMAccurateSlider"
-  s.version      = "1.2"
+  s.version      = "1.2.1"
   s.summary      = "A UISlider subclass that enables more accurate value selection."
 
   s.description  = <<-DESC
