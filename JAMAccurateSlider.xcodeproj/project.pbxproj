@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6330917D1B0AD11D00C329F6 /* JAMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6330917C1B0AD11D00C329F6 /* JAMViewController.m */; };
 		6354FB3A197F210000390034 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354FB39197F210000390034 /* Foundation.framework */; };
 		6354FB3C197F210000390034 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354FB3B197F210000390034 /* CoreGraphics.framework */; };
 		6354FB3E197F210000390034 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354FB3D197F210000390034 /* UIKit.framework */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6330917C1B0AD11D00C329F6 /* JAMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAMViewController.m; sourceTree = "<group>"; };
 		6354FB36197F210000390034 /* JAMAccurateSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JAMAccurateSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6354FB39197F210000390034 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6354FB3B197F210000390034 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +89,7 @@
 				6354FB48197F210000390034 /* JAMAppDelegate.h */,
 				6354FB49197F210000390034 /* JAMAppDelegate.m */,
 				6354FB4E197F210000390034 /* JAMViewController.h */,
+				6330917C1B0AD11D00C329F6 /* JAMViewController.m */,
 				6354FB4B197F210000390034 /* Main.storyboard */,
 				6354FB51197F210000390034 /* Images.xcassets */,
 				6354FB40197F210000390034 /* Supporting Files */,
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6330917D1B0AD11D00C329F6 /* JAMViewController.m in Sources */,
 				6354FB46197F210000390034 /* main.m in Sources */,
 				635EEB351B06C25D007DEB33 /* AccurateSlider.swift in Sources */,
 				6354FB72197F218C00390034 /* JAMAccurateSlider.m in Sources */,
